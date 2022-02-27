@@ -24,8 +24,8 @@ justify-items: center;
 	<div>
 	<h2>Enter Information</h2>
 	<form action='addPerson' method='post'>
-	<input type='number' name='id' placeholder='Id'><br><br>
 	<input type='text' name='name' placeholder='Name'><br><br>
+	<input type='number' name='adhar' placeholder='Adhar Number'><br><br>
 	<button type='submit'>Submit</button>
 	</form>
 	<h3>${response}</h3>

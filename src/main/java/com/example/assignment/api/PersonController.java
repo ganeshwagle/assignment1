@@ -23,18 +23,11 @@ public class PersonController {
 	}
 	
 	@PostMapping("/addPerson")
-	public ModelAndView addPerson(String id, String name) {
+	public ModelAndView addPerson(String name, String adhar) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("home.jsp");
-		if(id.length()==0 || name.length()==0)
-			mv.addObject("response","Invalid Values");
-		else {
-		Person person = new Person();
-		person.setId(Integer.valueOf(id));
-		person.setName(name);
-		String response = personService.addPerson(person);
+		String response = personService.addPerson(name, adhar);
 		mv.addObject("response",response);
-		}
 		return mv;
 	}
 }

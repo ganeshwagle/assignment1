@@ -1,17 +1,20 @@
 package com.example.assignment.model;
 
+import java.util.UUID;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
 public class Person {
 	@Id
-	private Integer id;
+	private UUID id;
 	private String name;
-	public Integer getId() {
+	private Long adhar;
+	public UUID getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -20,7 +23,12 @@ public class Person {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public Long getAdhar() {
+		return adhar;
+	}
+	public void setAdhar(Long adhar) {
+		this.adhar = adhar;
+	}
 	
-
 	
 }
