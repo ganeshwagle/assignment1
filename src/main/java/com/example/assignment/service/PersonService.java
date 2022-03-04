@@ -1,11 +1,10 @@
 package com.example.assignment.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.example.assignment.dao.PersonDao;
 import com.example.assignment.model.Person;
 
@@ -14,8 +13,18 @@ public class PersonService {
 	@Autowired
 	private PersonDao personDao;
 	private HashMap<String, Boolean> hashMap = new HashMap<String, Boolean>();
-	
+	public static boolean dataload=false;
+	private void loadData() {
+		List<Person> persons = personDao.findAll();
+		for(Person it:persons) {
+			hashMap.put(String.valueOf(it.getAdhar()),true);
+		}
+	}
 	public String addPerson(String name, String adhar) {
+		if(dataload==false) {
+			loadData();
+			dataload=true;
+		}
 		if(name.length()==0 || adhar.length()==0 || String.valueOf(Long.valueOf(adhar)).length()!=12)
 			return "Enter valid values!!!";
 		if(hashMap.get(adhar)!=null)
